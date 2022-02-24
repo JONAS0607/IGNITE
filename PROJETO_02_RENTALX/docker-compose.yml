@@ -1,6 +1,10 @@
 version: "3.7"
 
 services:
+  links:
+      - database
+  depends_on:
+      - database
   database_ignite:  
     image: postgres
     container_name: database_ignite
@@ -19,11 +23,7 @@ services:
     ports:
       - 3333:3333
     volumes:
-      - .:/usr/app
-    links:
-      - database
-    depends_on:
-      - database
+      - .:/usr/app    
 
 volumes:
   pgdata:
